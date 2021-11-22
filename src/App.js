@@ -105,6 +105,9 @@ function App() {
 		getData();
 	}, [blockchain.account]);
 
+	let mintLive = false;
+	let exileAlliances = false;
+
 	return (
 		<div className="wrapper" id="modern_wrap">
 			<img class="logo" src="./img/logo.png" alt="EXILE XCiX" />
@@ -128,10 +131,12 @@ function App() {
 						9,999 unique Exile XCIX NFTs randomly generated on the Ethereum
 						blockchain.
 					</p>
+					{!mintLive ? (
 					//--PRE MINT--
 					<div class="mint-button pre-mint button"><p>Mint coming soon</p></div>
 					//--END PRE MINT--
-
+					):(
+						<>
 					//--MINT--
 					<h2 class="availability">
 					{data.totalSupply} / {CONFIG.MAX_SUPPLY}
@@ -221,10 +226,12 @@ function App() {
 						)}
 					</>
 				)}
+				</>
+				)}
 					//--END MINT--
 				</div>
 				<div class="hero-img two-col-block__column">
-					<img src="./img/hero.png" alt="EXILE XCiX" />
+					<img src="./img/hero.gif" alt="EXILE XCiX" />
 					<div class="sticky-tape sticky-tape-1"></div>
 					<div class="sticky-tape sticky-tape-2"></div>
 				</div>
@@ -358,6 +365,8 @@ function App() {
 						</div>
 					</div>
 				</section>
+				{!exileAlliances ? (<>
+				</>):(
 				<section class="partners">
 					<h2>Exile Alliances</h2>
 					<div class="partner-wrap">
@@ -369,6 +378,7 @@ function App() {
 						<div class="partner"><a href="" target="_blank"><img src="./img/alan.png" alt="" /></a></div>
 					</div>
 				</section>
+				)}
 			</main>
 		</div>
 	);
