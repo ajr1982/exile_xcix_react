@@ -111,17 +111,22 @@ function App() {
 	return (
 		<div className="wrapper" id="modern_wrap">
 			<img class="logo" src="./img/logo.png" alt="EXILE XCiX" />
-			<nav>
+			//--Mobile NAV--
+			<nav class="mobile-nav">
+				
 				<ul>
-					<li>
-						<a href="#join">JOIN EXILE XCiX</a>
-					</li>
-					<li>
-						<a href="#roadmap">ROADMAP</a>
-					</li>
-					<li>
-						<a href="#team">THE TEAM</a>
-					</li>
+					<li><a href="#join">JOIN </a></li>
+					<li><a href="#roadmap">ROADMAP</a></li>
+					<li><a href="#team">TEAM</a></li>
+				</ul>
+			</nav>
+			//--DESKTOP NAV--
+			<nav class="dt-nav">
+				
+				<ul>
+					<li><a href="#join">JOIN EXILE XCiX</a></li>
+					<li><a href="#roadmap">ROADMAP</a></li>
+					<li><a href="#team">THE TEAM</a></li>
 				</ul>
 			</nav>
 			<header class="two-col-block">
@@ -269,7 +274,7 @@ function App() {
 					<div class="join-links two-col-block__column">
 						<p>JOIN US:</p>
 						<div class="two-col-block social">
-							<a href="" target="_blank" class="two-col-block__column">
+							<a href="https://discord.gg/3JGtdSqUH6" target="_blank" class="two-col-block__column">
 								<img src="./img/discord.png" alt="Discord" />
 							</a>
 							<a
@@ -320,10 +325,11 @@ function App() {
 				<section class="team">
 					<h2>The Team</h2>
 					<p class="blurb">A team of 4 Exiles each with 10-15yrs experience across creative, technical, marketing and innovation. All a bit worn down by the grind of a 9-5, feeling boxed-in and under-utilised. We aim to break free and invest more time in developing and supporting creative ventures. Hence the inspiration for the project.</p>
+					<div class="team-grid">
 					<div class="team-member brian two-col-block">
 						<img
-							src="./img/brian.png"
-							alt="Brian"
+							src="./img/xro.jpg"
+							alt="Xro"
 							class="team-avatar two-col-block__column"
 						/>
 						<div class="team-memeber-info two-col-block__column">
@@ -333,8 +339,8 @@ function App() {
 					</div>
 					<div class="team-member peter two-col-block">
 						<img
-							src="./img/peter.png"
-							alt="Peter"
+							src="./img/pedro.jpg"
+							alt="Pedro"
 							class="team-avatar two-col-block__column"
 						/>
 						<div class="team-memeber-info two-col-block__column">
@@ -345,7 +351,7 @@ function App() {
 					<div class="team-member alan two-col-block">
 						<img
 							src="./img/alan.png"
-							alt="Alan"
+							alt="Al"
 							class="team-avatar two-col-block__column"
 						/>
 						<div class="team-memeber-info two-col-block__column">
@@ -356,13 +362,14 @@ function App() {
 					<div class="team-member mal two-col-block">
 						<img
 							src="./img/mal.png"
-							alt="Mal"
+							alt="Macky"
 							class="team-avatar two-col-block__column"
 						/>
 						<div class="team-memeber-info two-col-block__column">
 							<h4 class="team-member-name">Macky</h4>
 							<p class="team-member-bio">Community, creative and security.</p>
 						</div>
+					</div>
 					</div>
 				</section>
 				{!exileAlliances ? (<>
