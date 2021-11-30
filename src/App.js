@@ -105,7 +105,7 @@ function App() {
 		getData();
 	}, [blockchain.account]);
 
-	let mintLive = false;
+	let mintLive = true;
 	let exileAlliances = false;
 
 	return (
