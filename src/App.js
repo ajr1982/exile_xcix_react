@@ -198,7 +198,7 @@ function App() {
 											decrementMintAmount();
 										}}
 									>
-										-
+										<p>-</p>
 									</div>
 
 									<p>{mintAmount}</p>
@@ -210,7 +210,7 @@ function App() {
 											incrementMintAmount();
 										}}
 									>
-										+
+										<p>+</p>
 									</div>
 								</div>
 
@@ -223,7 +223,7 @@ function App() {
 											getData();
 										}}
 									>
-										{claimingNft ? "BUSY" : "BUY"}
+										<p>{claimingNft ? "BUSY" : "BUY"}</p>
 									</div>
 								</div>
 								</div>
