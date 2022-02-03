@@ -520,7 +520,11 @@ function App() {
 						<div className="partner-wrap">
 							<div className="partner">
 								<a href="https://raritysniper.com/" target="_blank">
-									<img src="./img/rarity-sniper.png" alt="Rarity Sniper" />
+									<img
+										src="./img/rarity-sniper.png"
+										title="Rarity Sniper"
+										alt="Rarity Sniper"
+									/>
 								</a>
 							</div>
 						</div>
