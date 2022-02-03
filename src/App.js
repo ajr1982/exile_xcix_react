@@ -527,6 +527,30 @@ function App() {
 									/>
 								</a>
 							</div>
+							<div className="partner">
+								<a
+									href="https://nftevening.com/event/exile-xcix-genesis-drop"
+									target="_blank"
+								>
+									<img
+										src="./img/NFTevening.png"
+										title="NFT Evening"
+										alt="NFT Evening"
+									/>
+								</a>
+							</div>
+							<div className="partner">
+								<a
+									href="https://nftdropscalendar.com/nft-drops/exile-xcix"
+									target="_blank"
+								>
+									<img
+										src="./img/NFT-Calendar-Logo.png"
+										title="NFT Calendar"
+										alt="NFT Calendar"
+									/>
+								</a>
+							</div>
 						</div>
 					</section>
 				)}
