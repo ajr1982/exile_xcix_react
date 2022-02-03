@@ -105,7 +105,7 @@ function App() {
 		getData();
 	}, [blockchain.account]);
 
-	let mintLive = true;
+	let mintLive = false;
 	let exileAlliances = true;
 
 	return (
@@ -148,9 +148,15 @@ function App() {
 					</p>
 					{!mintLive ? (
 						//--PRE MINT--
-						<div className="mint-button pre-mint button">
-							<p>Mint 18.02.22</p>
-						</div>
+						<>
+							<p>
+								{CONFIG.SYMBOL} tokens cost {CONFIG.DISPLAY_COST}{" "}
+								{CONFIG.NETWORK.SYMBOL} excluding gas fee.
+							</p>
+							<div className="mint-button pre-mint button">
+								<p>Minting 18.02.22</p>
+							</div>
+						</>
 					) : (
 						//--END PRE MINT--
 						<>
