@@ -106,144 +106,161 @@ function App() {
 	}, [blockchain.account]);
 
 	let mintLive = true;
-	let exileAlliances = false;
+	let exileAlliances = true;
 
 	return (
 		<div className="wrapper" id="modern_wrap">
-			<img class="logo" src="./img/logo.png" alt="EXILE XCiX" />
+			<img className="logo" src="./img/logo.png" alt="EXILE XCiX" />
 			//--Mobile NAV--
-			<nav class="mobile-nav">
-				
+			<nav className="mobile-nav">
 				<ul>
-					<li><a href="#join">JOIN </a></li>
-					<li><a href="#roadmap">ROADMAP</a></li>
-					<li><a href="#team">TEAM</a></li>
+					<li>
+						<a href="#join">JOIN </a>
+					</li>
+					<li>
+						<a href="#roadmap">ROADMAP</a>
+					</li>
+					<li>
+						<a href="#team">TEAM</a>
+					</li>
 				</ul>
 			</nav>
 			//--DESKTOP NAV--
-			<nav class="dt-nav">
-				
+			<nav className="dt-nav">
 				<ul>
-					<li><a href="#join">JOIN EXILE XCiX</a></li>
-					<li><a href="#roadmap">ROADMAP</a></li>
-					<li><a href="#team">THE TEAM</a></li>
+					<li>
+						<a href="#join">JOIN EXILE XCiX</a>
+					</li>
+					<li>
+						<a href="#roadmap">ROADMAP</a>
+					</li>
+					<li>
+						<a href="#team">THE TEAM</a>
+					</li>
 				</ul>
 			</nav>
-			<header class="two-col-block">
-			<div class="hero-text two-col-block__column">
+			<header className="two-col-block">
+				<div className="hero-text two-col-block__column">
 					<h1>Join the Axis of Exiles</h1>
 					<p>
-						9,999 unique Exile XCIX NFTs randomly generated on the Ethereum
+						999 unique Exile XCIX NFTs randomly generated on the Ethereum
 						blockchain.
 					</p>
 					{!mintLive ? (
-					//--PRE MINT--
-					<div class="mint-button pre-mint button"><p>Mint coming soon</p></div>
-					//--END PRE MINT--
-					):(
+						//--PRE MINT--
+						<div className="mint-button pre-mint button">
+							<p>Mint 18.02.22</p>
+						</div>
+					) : (
+						//--END PRE MINT--
 						<>
-					//--MINT--
-					<h2 class="availability">
-					{data.totalSupply} / {CONFIG.MAX_SUPPLY}
-					</h2>
-
-					//-- SOLD OUT--
-					{Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
-					<div class="sold-out">
-						<div class="mint-button button"><p>SOLD OUT</p></div>
-						<p>You can still find {CONFIG.NFT_NAME} on
-
-						<a target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
-							{CONFIG.MARKETPLACE}
-						</a></p>
-					</div>
-				) : (
-					<>
-						<h3>
-							1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
-							{CONFIG.NETWORK.SYMBOL}.
-						</h3>
-
-						<p>Excluding gas fees.</p>
-
-						{blockchain.account === "" || blockchain.smartContract === null ? (
-							<div class="not-connected">
-								<p>Connect to the {CONFIG.NETWORK.NAME} network</p>
-								<div class="connect-wrap">
-								<div class="button connect-btn"
-									onClick={(e) => {
-										e.preventDefault();
-										dispatch(connect());
-										getData();
-									}}
-								>
-									<p>CONNECT</p>
-								</div>
-								{blockchain.errorMsg !== "" ? (
-									<>
-										<p>{blockchain.errorMsg}</p>
-									</>
-								) : null}
-							</div>
-							</div>
-						) : (
-							<>
-								<p>{feedback}</p>
-								<div class="purchase-wrap">
-								<div class="quantity">
-									<div class="button decrement-btn"
-										disabled={claimingNft ? 1 : 0}
-										onClick={(e) => {
-											e.preventDefault();
-											decrementMintAmount();
-										}}
-									>
-										<p>-</p>
+							//--MINT--
+							<h2 className="availability">
+								{data.totalSupply} / {CONFIG.MAX_SUPPLY}
+							</h2>
+							//-- SOLD OUT--
+							{Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
+								<div className="sold-out">
+									<div className="mint-button button">
+										<p>SOLD OUT</p>
 									</div>
-
-									<p>{mintAmount}</p>
-
-									<div class="button increment-btn"
-										disabled={claimingNft ? 1 : 0}
-										onClick={(e) => {
-											e.preventDefault();
-											incrementMintAmount();
-										}}
-									>
-										<p>+</p>
-									</div>
+									<p>
+										You can still find {CONFIG.NFT_NAME} on
+										<a target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
+											{CONFIG.MARKETPLACE}
+										</a>
+									</p>
 								</div>
+							) : (
+								<>
+									<h3>
+										1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
+										{CONFIG.NETWORK.SYMBOL}.
+									</h3>
 
-								<div class='buy'>
-									<div class="button mint-nft"
-										disabled={claimingNft ? 1 : 0}
-										onClick={(e) => {
-											e.preventDefault();
-											claimNFTs();
-											getData();
-										}}
-									>
-										<p>{claimingNft ? "BUSY" : "BUY"}</p>
-									</div>
-								</div>
-								</div>
-							</>
-						)}
-					</>
-				)}
-				</>
-				)}
+									<p>Excluding gas fees.</p>
+
+									{blockchain.account === "" ||
+									blockchain.smartContract === null ? (
+										<div className="not-connected">
+											<p>Connect to the {CONFIG.NETWORK.NAME} network</p>
+											<div className="connect-wrap">
+												<div
+													className="button connect-btn"
+													onClick={(e) => {
+														e.preventDefault();
+														dispatch(connect());
+														getData();
+													}}
+												>
+													<p>CONNECT</p>
+												</div>
+												{blockchain.errorMsg !== "" ? (
+													<>
+														<p>{blockchain.errorMsg}</p>
+													</>
+												) : null}
+											</div>
+										</div>
+									) : (
+										<>
+											<p>{feedback}</p>
+											<div className="purchase-wrap">
+												<div className="quantity">
+													<div
+														className="button decrement-btn"
+														disabled={claimingNft ? 1 : 0}
+														onClick={(e) => {
+															e.preventDefault();
+															decrementMintAmount();
+														}}
+													>
+														<p>-</p>
+													</div>
+
+													<p>{mintAmount}</p>
+
+													<div
+														className="button increment-btn"
+														disabled={claimingNft ? 1 : 0}
+														onClick={(e) => {
+															e.preventDefault();
+															incrementMintAmount();
+														}}
+													>
+														<p>+</p>
+													</div>
+												</div>
+
+												<div className="buy">
+													<div
+														className="button mint-nft"
+														disabled={claimingNft ? 1 : 0}
+														onClick={(e) => {
+															e.preventDefault();
+															claimNFTs();
+															getData();
+														}}
+													>
+														<p>{claimingNft ? "BUSY" : "BUY"}</p>
+													</div>
+												</div>
+											</div>
+										</>
+									)}
+								</>
+							)}
+						</>
+					)}
 					//--END MINT--
 				</div>
-				<div class="hero-img two-col-block__column">
+				<div className="hero-img two-col-block__column">
 					<img src="./img/hero.gif" alt="EXILE XCiX" />
-					<div class="sticky-tape sticky-tape-1"></div>
-					<div class="sticky-tape sticky-tape-2"></div>
+					<div className="sticky-tape sticky-tape-1"></div>
+					<div className="sticky-tape sticky-tape-2"></div>
 				</div>
 			</header>
-		
-
-			<div class="disclaimer">
+			<div className="disclaimer">
 				<p>
 					Please make sure you are connected to the right network (
 					{CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
@@ -258,133 +275,256 @@ function App() {
 			</div>
 			<main>
 				<a id="join"></a>
-				<section class="join-exile two-col-block" aria-label="Join Exile XCiX">
-					<div class="join-copy two-col-block__column">
+				<section
+					className="join-exile two-col-block"
+					aria-label="Join Exile XCiX"
+				>
+					<div className="join-copy two-col-block__column">
 						<h2>
 							NFT project for the <span>XCIX</span>
 						</h2>
-						<p>We'd love to bring together a diverse range of creators and help them to get their projects off the ground by introducing them to complementary creators, using our network to promote them and a community fund to invest in them.
-
+						<p>
+							We'd love to bring together a diverse range of creators and help
+							them to get their projects off the ground by introducing them to
+							complementary creators, using our network to promote them and a
+							community fund to invest in them.
 						</p>
 						<p>
-							Join the Discord, follow on Twitter. If you want to be rewarded be brave, be busy, be creative, and importantly believe!
+							Join the Discord, follow on Twitter. If you want to be rewarded be
+							brave, be busy, be creative, and importantly believe!
 						</p>
 					</div>
 
-					<div class="join-links two-col-block__column">
+					<div className="join-links two-col-block__column">
 						<p>JOIN US:</p>
-						<div class="two-col-block social">
-							<a href="https://discord.gg/3JGtdSqUH6" target="_blank" class="two-col-block__column">
+						<div className="two-col-block social">
+							<a
+								href="https://discord.gg/3JGtdSqUH6"
+								target="_blank"
+								className="two-col-block__column"
+							>
 								<img src="./img/discord.png" alt="Discord" />
 							</a>
 							<a
 								href="https://twitter.com/ExileXCIX"
 								target="_blank"
-								class="two-col-block__column"
+								className="two-col-block__column"
 							>
 								<img src="./img/twitter.png" alt="Twitter" />
 							</a>
 						</div>
 					</div>
 				</section>
-				<section class="banner">
+				<section className="banner">
 					<img src="./img/banner.png" alt="banner" />
 				</section>
-				<section class="origins">
+				<section className="origins">
 					<h2>Exile Origins</h2>
-					<div class="two-col-block">
-						<div class="origins-copy-left two-col-block__column">
-							<p class="no-margin">You may not realise it but life exists beyond your reality, somewhat different yet sharing the same struggles. Tyranny, selfishness, greed. These are universal. Where there is life, they exist.</p>
-							<p>For centuries and through these dimensions, a governing elite 1% have put in place rules, regulations and restrictions to control the ‘remainder’.
+					<div className="two-col-block">
+						<div className="origins-copy-left two-col-block__column">
+							<p className="no-margin">
+								You may not realise it but life exists beyond your reality,
+								somewhat different yet sharing the same struggles. Tyranny,
+								selfishness, greed. These are universal. Where there is life,
+								they exist.
 							</p>
-							<p>One rebel, a variation of whom exists in every dimension, unique yet familiar, has long fought for this ‘remainder’. Operating in the shadows with name and description passed on through folklore, hearsay and partial sightings – long admired by the people.
+							<p>
+								For centuries and through these dimensions, a governing elite 1%
+								have put in place rules, regulations and restrictions to control
+								the ‘remainder’.
+							</p>
+							<p>
+								One rebel, a variation of whom exists in every dimension, unique
+								yet familiar, has long fought for this ‘remainder’. Operating in
+								the shadows with name and description passed on through
+								folklore, hearsay and partial sightings – long admired by the
+								people.
 							</p>
 						</div>
-						<div class="origins-copy-right two-col-block__column">
-							<p class="no-margin">
-								However, the line between good and evil is a thin one. One man’s friend is another man’s foe. Increasingly outcast by mainstream society as the elite use their tightening grip of media to turn public opinion against the rebel and pursue them for their ‘crimes’.</p>
-							<p>
-								Individually outnumbered, out-financed, isolated and exhausted. The rebels have been banished from the disparate dimensions with a bounty on their head, exiled by the very people they were trying to help. 
+						<div className="origins-copy-right two-col-block__column">
+							<p className="no-margin">
+								However, the line between good and evil is a thin one. One man’s
+								friend is another man’s foe. Increasingly outcast by mainstream
+								society as the elite use their tightening grip of media to turn
+								public opinion against the rebel and pursue them for their
+								‘crimes’.
 							</p>
 							<p>
-								Now, banding together for the first time, realising that they are stronger together than alone, our exiles are resolute.
+								Individually outnumbered, out-financed, isolated and exhausted.
+								The rebels have been banished from the disparate dimensions with
+								a bounty on their head, exiled by the very people they were
+								trying to help.
+							</p>
+							<p>
+								Now, banding together for the first time, realising that they
+								are stronger together than alone, our exiles are resolute.
 							</p>
 							<p>They will continue the fight for the remaining 99.</p>
 						</div>
 					</div>
 				</section>
 				<a id="roadmap"></a>
-				<section class="roadmap">
-					
-						<h2>Roadmap <span>Coming Soon</span></h2>
-						<p>Our project ethos is to help the underdog, support the little guy and a belief that we can achieve much more together than we could have alone. Our roadmap is design to help achieve that and will be voted on by the community before finalising.</p>
-						<img src="./img/graffiti.png" alt="XCiX" />
-					
+				<section className="roadmap">
+					<h2>
+						Stage 1 Roadmap <span>Genesis Collection</span>
+					</h2>
+					<p>
+						The Genesis Release will contain exclusive traits limited to Genesis
+						drop only guaranteeing rarity for the long term. We gave our members
+						opportunity to vote and feedback on our roadmap over the last few
+						months. We've updated the immediate term (Genesis) roadmap to
+						reflect this feedback.
+					</p>
+					<div className="roadmap-chart">
+						<div className="percent-sold">
+							<span>33% - </span>
+							<p>10 ultra-rare 1/1 Characters</p>
+						</div>
+						<div className="thirty-three-goals goals">
+							<div className="goal-wrap">
+								<img src="./img/play_arrow.svg" />
+								<p>
+									Ultra-rare 1/1 (Full Characters) will be randomly airdropped
+									to 10 of the first 333 collectors
+								</p>
+							</div>
+							<div className="goal-wrap">
+								<img src="./img/play_arrow.svg" />
+								<p>All profits reinvested in marketing until sold out.</p>
+							</div>
+						</div>
+						<div className="percent-sold">
+							<span>66% - </span>
+							<p>3d Character and Gas Refund Draw</p>
+						</div>
+						<div className="sixty-six-goals goals">
+							<div className="goal-wrap">
+								<img src="./img/play_arrow.svg" />
+								<p>
+									3D Full Body Test Exile Character Developed for future rollout
+								</p>
+							</div>
+							<div className="goal-wrap">
+								<img src="./img/play_arrow.svg" />
+								<p>
+									Gas Refund Draw – Holders of Exile characters 1-666 will be
+									entered into a draw to win their Gas Fee back (10 winners).
+								</p>
+							</div>
+						</div>
+						<div className="percent-sold">
+							<span>100% - </span>
+							<p>Community Fund and 1 ETH Draw</p>
+						</div>
+						<div className="hundred-goals goals">
+							<div className="goal-wrap">
+								<img src="./img/play_arrow.svg" />
+								<p>
+									A community fund will be established and all holders will have
+									the right to vote on which projects it is put towards. See
+									Vision Doc below for more details.
+								</p>
+							</div>
+							<div className="goal-wrap">
+								<img src="./img/play_arrow.svg" />
+								<p>
+									Prize Drop - Airdrop NFTs and disperse other prizes to early
+									supporters and competiton winners.
+								</p>
+							</div>
+							<div className="goal-wrap">
+								<img src="./img/play_arrow.svg" />
+								<p>
+									Draw to win 1ETH - every Exile Holder will be entered in to
+									win.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div>
+						<br />
+						<p>
+							Holders of Exile XCIX Genesis NFTs will also entitle them to an
+							NFT from the next release.
+						</p>
+						<a href="./Exile-XCIX-Vision.pdf">Read the Vision Doc</a>
+					</div>
+					<img src="./img/graffiti.png" alt="XCiX" />
 				</section>
 				<a id="team"></a>
-				<section class="team">
+				<section className="team">
 					<h2>The Team</h2>
-					<p class="blurb">A team of 4 Exiles each with 10-15yrs experience across creative, technical, marketing and innovation. All a bit worn down by the grind of a 9-5, feeling boxed-in and under-utilised. We aim to break free and invest more time in developing and supporting creative ventures. Hence the inspiration for the project.</p>
-					<div class="team-grid">
-					<div class="team-member brian two-col-block">
-						<img
-							src="./img/xro.jpg"
-							alt="Xro"
-							class="team-avatar two-col-block__column"
-						/>
-						<div class="team-memeber-info two-col-block__column">
-							<h4 class="team-member-name">Xro</h4>
-							<p class="team-member-bio">Story, organisation and coordination</p>
+					<p className="blurb">
+						A team of 4 Exiles each with 10-15yrs experience across creative,
+						technical, marketing and innovation. All a bit worn down by the
+						grind of a 9-5, feeling boxed-in and under-utilised. We aim to break
+						free and invest more time in developing and supporting creative
+						ventures. Hence the inspiration for the project.
+					</p>
+					<div className="team-grid">
+						<div className="team-member brian two-col-block">
+							<img
+								src="./img/xro.jpg"
+								alt="Xro"
+								className="team-avatar two-col-block__column"
+							/>
+							<div className="team-memeber-info two-col-block__column">
+								<h4 className="team-member-name">Xro</h4>
+								<p className="team-member-bio">
+									Story, organisation and coordination
+								</p>
+							</div>
 						</div>
-					</div>
-					<div class="team-member peter two-col-block">
-						<img
-							src="./img/pedro.jpg"
-							alt="Pedro"
-							class="team-avatar two-col-block__column"
-						/>
-						<div class="team-memeber-info two-col-block__column">
-							<h4 class="team-member-name">Pedro</h4>
-							<p class="team-member-bio">Artist with an attitude.</p>
+						<div className="team-member peter two-col-block">
+							<img
+								src="./img/pedro.jpg"
+								alt="Pedro"
+								className="team-avatar two-col-block__column"
+							/>
+							<div className="team-memeber-info two-col-block__column">
+								<h4 className="team-member-name">Pedro</h4>
+								<p className="team-member-bio">Artist with an attitude.</p>
+							</div>
 						</div>
-					</div>
-					<div class="team-member alan two-col-block">
-						<img
-							src="./img/al.jpg"
-							alt="Al"
-							class="team-avatar two-col-block__column"
-						/>
-						<div class="team-memeber-info two-col-block__column">
-							<h4 class="team-member-name">Al</h4>
-							<p class="team-member-bio">Technology and development.</p>
+						<div className="team-member alan two-col-block">
+							<img
+								src="./img/al.jpg"
+								alt="Al"
+								className="team-avatar two-col-block__column"
+							/>
+							<div className="team-memeber-info two-col-block__column">
+								<h4 className="team-member-name">Al</h4>
+								<p className="team-member-bio">Technology and development.</p>
+							</div>
 						</div>
-					</div>
-					<div class="team-member mal two-col-block">
-						<img
-							src="./img/macky.jpg"
-							alt="Macky"
-							class="team-avatar two-col-block__column"
-						/>
-						<div class="team-memeber-info two-col-block__column">
-							<h4 class="team-member-name">Macky</h4>
-							<p class="team-member-bio">Community, creative and security.</p>
+						<div className="team-member mal two-col-block">
+							<img
+								src="./img/macky.jpg"
+								alt="Macky"
+								className="team-avatar two-col-block__column"
+							/>
+							<div className="team-memeber-info two-col-block__column">
+								<h4 className="team-member-name">Macky</h4>
+								<p className="team-member-bio">
+									Community, creative and security.
+								</p>
+							</div>
 						</div>
-					</div>
 					</div>
 				</section>
-				{!exileAlliances ? (<>
-				</>):(
-				<section class="partners">
-					<h2>Exile Alliances</h2>
-					<div class="partner-wrap">
-						<div class="partner"><a href="" target="_blank"><img src="./img/alan.png" alt="" /></a></div>
-						<div class="partner"><a href="" target="_blank"><img src="./img/alan.png" alt="" /></a></div>
-						<div class="partner"><a href="" target="_blank"><img src="./img/alan.png" alt="" /></a></div>
-						<div class="partner"><a href="" target="_blank"><img src="./img/alan.png" alt="" /></a></div>
-						<div class="partner"><a href="" target="_blank"><img src="./img/alan.png" alt="" /></a></div>
-						<div class="partner"><a href="" target="_blank"><img src="./img/alan.png" alt="" /></a></div>
-					</div>
-				</section>
+				{!exileAlliances ? (
+					<></>
+				) : (
+					<section className="partners">
+						<h2>Exile Alliances</h2>
+						<div className="partner-wrap">
+							<div className="partner">
+								<a href="https://raritysniper.com/" target="_blank">
+									<img src="./img/rarity-sniper.png" alt="Rarity Sniper" />
+								</a>
+							</div>
+						</div>
+					</section>
 				)}
 			</main>
 		</div>
